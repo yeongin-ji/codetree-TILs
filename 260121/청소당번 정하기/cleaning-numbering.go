@@ -5,11 +5,7 @@ import "fmt"
 func main() {
 	var c2, c3, c12, n int
 	fmt.Scanf("%d", &n)
-	for i := range n {
-		if i == 0 {
-			continue
-		}
-
+	for i := 1; i <= n; i++ {
 		if i%12==0 {
 			c12++
 		} else if i%3==0 {
