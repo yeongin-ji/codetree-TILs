@@ -3,12 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	var n float64
-	fmt.Scanf("%f", &n)
+	var n int
+	fmt.Scanf("%d", &n)
 	i := 1
 	cnt := 0
 	for {
-		n /= float64(i)
+		n /= i
 		cnt++
 		if n <= 1 {
 			break
