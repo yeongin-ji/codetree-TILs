@@ -10,5 +10,6 @@ func main() {
 		if i%3==0 {
 			fmt.Printf("%d ", i)
 		}
+		i++
 	}
 }
