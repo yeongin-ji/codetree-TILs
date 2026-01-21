@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	var c rune
-	var n, d int
+	var n int
 	fmt.Scanf("%c %d", &c, &n)
 	switch c {
 	case 'A':
