@@ -3,8 +3,9 @@ package main
 import "fmt"
 
 func main() {
+	var sum, cnt int
 	for {
-		var n, cnt, sum int
+		var n int
 		fmt.Scan(&n)
 		if n < 20 || n >= 30 {
 			break
