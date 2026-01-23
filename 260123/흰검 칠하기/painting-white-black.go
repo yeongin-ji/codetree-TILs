@@ -32,27 +32,31 @@ func main() {
 	}
 
 	// Please write your code here.
+	// B: Black
+	// W: White
+	// G: Gray
 	const (
 		B int = iota + 1
 		W
 		G
 	)
 
+	// (1)Tile 구조체 정의
+	// - 양방향 Linked list 활용
+	// - White, Black 색칠 횟수 카운트 포함
+	// - curr: 현재 타일 색깔
 	type Tile struct {
-		wCnt, bCnt int
-		curr int
-		next *Tile
-		prev *Tile
+		wCnt, bCnt, curr int
+		prev, next *Tile
 	}
 
-	t := &Tile{}
-	cursor := t
+	cursor := &Tile{} // cursor: 현재 가리키고 있는 타일 위치
 	for _, cmd := range commands {
-		//fmt.Println(j, "번째 명령을 실행합니다.")
-		// 방향, 색 설정
-		var dst *Tile
-		var color int
-		var cnt *int
+		var dst *Tile // 가고자 하는 방향의 다음 칸 타일을 가리킴
+		var color int // 어떤 색으로 칠할 것인지
+		var cnt *int // 증가시킬 색의 cnt에 직접 접근하기 위함
+
+		// (2)방향에 따라 dst, color, cnt를 세팅
 		if cmd.dir == "L" { 
 			dst = cursor.prev
 			cnt = &cursor.wCnt
@@ -62,64 +66,60 @@ func main() {
 			cnt = &cursor.bCnt
 			color = B
 		}
-		for i := range cmd.x {
-			// 색칠하기: 회색이 아니라면 방향에 따라 색칠
-			if cursor.curr != G {
-				cursor.curr = color
-				*cnt = *cnt + 1
-			}
 
-			// 타일 옮기기 (왼/오)
-			// (1) 마지막 반복이라면 건너뛰기
+		// (3)x 만큼 이동하며 색칠 시작
+		for i := range cmd.x {
+			// 색칠하기: 방향에 따라 색칠 및 cnt++
+			cursor.curr = color
+			(*cnt)++
+
+			// 타일 옮기기:
+			// - 마지막 반복이라면 건너뛰기
 			if i == cmd.x-1 {
 				continue
 			}
-			// (2) 이미 노드가 있다면 이동하기
-			// (3) 가고자 하는 방향이 nil이라면 새로운 노드 만들기
+			// - 이미 노드가 있다면 이동하기
 			if dst != nil {
-				//fmt.Println("진행 방향에 타일이 이미 존재합니다.")
+				// cursor, dst, cnt는 함께 움직인다
 				cursor = dst
 				if cmd.dir == "L" {
 					dst = cursor.prev
 					cnt = &cursor.wCnt
-					//fmt.Println("왼쪽으로 이동합니다.")
 				} else if cmd.dir == "R" {
 					dst = cursor.next
 					cnt = &cursor.bCnt
-					//fmt.Println("오른쪽으로 이동합니다.")
 				}
-			} else {
-				//fmt.Println("진행 방향에 타일이 없습니다. 새로 만듭니다.")
+			} else { // - 가고자 하는 방향이 nil이라면 새로운 노드 만들기
 				tmp := &Tile{}
 				if cmd.dir == "L" {
+					// 노드 만들고 연결하기
 					tmp.next = cursor
 					cursor.prev = tmp
 					cursor = cursor.prev
-					//fmt.Println("왼쪽으로 이동합니다.")
 
+					// dst, cnt도 따라간다
 					dst = cursor.prev
 					cnt = &cursor.wCnt
 				} else if cmd.dir == "R" {
 					tmp.prev = cursor
 					cursor.next = tmp
 					cursor = cursor.next
-					//fmt.Println("오른쪽으로 이동합니다.")
 
 					dst = cursor.next
 					cnt = &cursor.bCnt
 				}	
 			}
-			//fmt.Println()
 		}
 	}
-	// 순회하며 개수 새기
-	// (1) 왼쪽 끝으로 이동
+	// (4)순회하며 개수 새기
+	// - 왼쪽 끝으로 이동
 	for cursor.prev != nil { 
 		cursor = cursor.prev
 	}
-	// (2) 오른쪽 끝으로 이동하며 개수 새기
+	// - 오른쪽 끝으로 이동하며 개수 새기
 	var w, b, g int
 	for cursor != nil {
+		// count가 둘다 2 이상이면 현재 색과 상관없이 회색 카운트 증가
 		if cursor.wCnt>=2 && cursor.bCnt>=2 {
 			g++
 		} else if cursor.curr == W {
@@ -130,6 +130,6 @@ func main() {
 		cursor = cursor.next
 	}
 
-	// 출력하기
+	// (5)출력하기
 	fmt.Print(w, b, g)
 }
