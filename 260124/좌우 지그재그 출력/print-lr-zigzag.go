@@ -12,7 +12,7 @@ func main() {
 			}
 		} else {
 			for j := range n {
-				fmt.Printf("%d ", i*n*2-j)
+				fmt.Printf("%d ", i*n-j)
 			}
 		}
 		fmt.Println()
