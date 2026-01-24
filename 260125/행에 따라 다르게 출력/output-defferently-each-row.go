@@ -15,7 +15,7 @@ func main() {
 		} else {
 			for range n {
 				cnt += 2
-				fmt.Printf("%d", cnt)
+				fmt.Printf("%d ", cnt)
 			}
 		}
 		fmt.Println()
