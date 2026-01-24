@@ -8,8 +8,8 @@ func main() {
 	cnt := 1
 	for range n {
 		for range n {
-			fmt.Printf("%d ", cnt)
-			cnt = cnt%10+1
+			fmt.Printf("%d", cnt)
+			cnt = cnt%9+1
 		}
 		fmt.Println()
 	}	
