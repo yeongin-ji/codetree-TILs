@@ -5,14 +5,14 @@ import "fmt"
 func main() {
 	var n int
 	fmt.Scan(&n)
-	for range n {
+	for i := range n {
 		if i%2==0 {
-			for i := range n {
-				fmt.Print(i+1)
+			for j := range n {
+				fmt.Print(j+1)
 			}
 		} else {
-			for i := range n {
-				fmt.Print(n-i)
+			for j := range n {
+				fmt.Print(n-j)
 			}
 		}
 		fmt.Println()
