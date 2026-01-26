@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	var arr [100]int
+	var arr [110]int
 	i := 0
 	for {
 		if _, err := fmt.Scan(&arr[i]); err != nil {
