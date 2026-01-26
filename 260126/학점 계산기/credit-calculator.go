@@ -10,6 +10,7 @@ func main() {
 		var v float64
 		fmt.Scan(&v)
 		sum += v
+		cnt++
 	}	
 	avg := sum/float64(cnt)
 	fmt.Printf("%.1f\n", avg)
