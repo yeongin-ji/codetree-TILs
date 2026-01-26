@@ -10,6 +10,7 @@ func main() {
 	for i, v := range arr {
 		if v%3==0 {
 			fmt.Print(arr[i-1])
+			break
 		}
 	}
 }
