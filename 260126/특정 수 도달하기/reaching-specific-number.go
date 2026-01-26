@@ -16,5 +16,5 @@ func main() {
 		}
 	}
 	avg := float64(sum)/float64(cnt)
-	fmt.Print(sum, avg)
+	fmt.Printf("%d %.1f", sum, avg)
 }
