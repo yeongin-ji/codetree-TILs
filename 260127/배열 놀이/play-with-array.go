@@ -22,11 +22,11 @@ func main() {
 			fmt.Scan(&b)
 			for j := range N {
 				if arr[j]==b {
-					idx = j
+					idx = j+1
 					break
 				}
 			}
-			fmt.Println(idx+1)
+			fmt.Println(idx)
 		case 3:
 			var s, e int
 			fmt.Scan(&s, &e)
