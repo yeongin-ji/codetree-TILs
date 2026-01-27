@@ -6,12 +6,13 @@ func main() {
 	var a, b int
 	var cnt [10]int
 	fmt.Scan(&a, &b)
-	for a >= 1 {
+	for a > 1 {
 		cnt[a%b]++
 		a /= b
 	}
 	sum := 0
 	for i := range b {
+		fmt.Println(cnt[i])
 		sum += cnt[i] * cnt[i]
 	}
 	fmt.Print(sum)
