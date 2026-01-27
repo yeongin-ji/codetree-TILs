@@ -3,15 +3,22 @@ package main
 import "fmt"
 
 func main() {
-	var arr [10]int	
+	var cnt [10]int	
+	var arr [110]int
+	i := 0
 	for {
-		var v int
-		if _, err := fmt.Scan(&v); err != nil && v==0 {
+		if _, err := fmt.Scan(&arr[i]); err != nil {
 			break
 		}
-		arr[v/10]++
+		i++
+	}
+	for j := range i {
+		if arr[j]==0 {
+			break
+		}
+		cnt[arr[j]/10]++
 	}
 	for i := 1; i <= 9; i++ {
-		fmt.Printf("%d - %d\n", i, arr[i])
+		fmt.Printf("%d - %d\n", i, cnt[i])
 	}
 }
