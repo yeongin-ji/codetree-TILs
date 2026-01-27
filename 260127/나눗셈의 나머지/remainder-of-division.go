@@ -12,7 +12,6 @@ func main() {
 	}
 	sum := 0
 	for i := range b {
-		fmt.Println(cnt[i])
 		sum += cnt[i] * cnt[i]
 	}
 	fmt.Print(sum)
