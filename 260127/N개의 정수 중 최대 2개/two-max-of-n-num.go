@@ -14,7 +14,7 @@ func main() {
 		fmt.Scan(&arr[i])
 	}	
 	m = arr[0]
-	idx := -1
+	idx := 0
 	for i := range n {
 		if arr[i] > m {
 			m = arr[i]
