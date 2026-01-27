@@ -16,7 +16,7 @@ func main() {
 	for i := range N1 {
 		found := true
 		for j := i; j < i+N2; j++ {
-			if j >= N1-1 || a[j]!=b[j-i] {
+			if j > N1-1 || a[j]!=b[j-i] {
 				found = false
 				break
 			}
