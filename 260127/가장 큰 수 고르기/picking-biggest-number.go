@@ -10,7 +10,7 @@ func main() {
 	for i := range 10 {
 		fmt.Scan(&arr[i])
 	}	
-	max := math.MaxInt
+	max := math.MinInt
 	for i := range 10 {
 		if arr[i] > max {
 			max = arr[i]
