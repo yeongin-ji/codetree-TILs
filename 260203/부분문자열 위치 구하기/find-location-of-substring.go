@@ -8,7 +8,7 @@ func main() {
 	var n, m string
 	fmt.Scan(&n, &m)
 	flag := true
-	for i := 0; i < len(n)-len(m); i++ {
+	for i := 0; i <= len(n)-len(m); i++ {
 		found := true
 		for j := range len(m) {
 			if n[i+j] != m[j] {
