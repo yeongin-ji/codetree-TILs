@@ -8,10 +8,10 @@ import (
 )
 
 func isPartial(a, b []int) bool {
-	for i := range len(a) {
+	for i := 0; i <= len(a)-len(b); i++ {
 		found := true
 		for j := range len(b) {
-			if i+j<len(a) && a[i+j]!=b[j] {
+			if a[i+j]!=b[j] {
 				found = false
 				break
 			}
