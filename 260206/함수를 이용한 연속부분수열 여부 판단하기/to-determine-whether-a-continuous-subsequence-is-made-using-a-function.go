@@ -11,7 +11,7 @@ func isPartial(a, b []int) bool {
 	for i := range len(a) {
 		found := true
 		for j := range len(b) {
-			if a[i+j] != b[j] {
+			if i+j<len(a) a[i+j]!=b[j] {
 				found = false
 				break
 			}
