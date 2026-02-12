@@ -8,6 +8,9 @@ import (
 )
 
 func f(arr []int) int {
+	if len(arr)==1 {
+		return arr[0]
+	}
 	if len(arr)==2 {
 		return lcm(arr[0], arr[1])
 	} else {
