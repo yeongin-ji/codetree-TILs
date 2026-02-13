@@ -7,16 +7,15 @@ import (
 	"strconv"
 )
 
-// selection sort
 func sort(nums []int) {
-	for i := range len(nums)-1 {
-		min_idx := i
-		for j := i; j < len(nums); j++ {
-			if nums[min_idx] > nums[j] {
-				min_idx = j
+	for i := 1; i < len(nums); i++ {
+		for j := i; j > 0; j-- {
+			if nums[j] < nums[j-1] {
+				swap(nums, j, j-1)
+			} else {
+				break
 			}
 		}
-		swap(nums, i, min_idx)
 	}
 }
 
