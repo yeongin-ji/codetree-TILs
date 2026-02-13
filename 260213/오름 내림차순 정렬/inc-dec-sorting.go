@@ -8,12 +8,10 @@ import (
 )
 
 func sort(nums []int) {
-	for i := 1; i < len(nums); i++ {
-		for j := i; j > 0; j-- {
-			if nums[j] < nums[j-1] {
-				swap(nums, j, j-1)
-			} else {
-				break
+	for i := range len(nums) - 1 {
+		for j := range len(nums) - 1 - i {
+			if nums[j] > nums[j+1] {
+				swap(nums, j, j+1)
 			}
 		}
 	}
