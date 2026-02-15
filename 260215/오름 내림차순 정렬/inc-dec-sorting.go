@@ -7,47 +7,33 @@ import (
 	"strconv"
 )
 
-func merge_sort(nums []int) {
-	//fmt.Printf("merge_sort(%d)\n", len(nums))
-	// 종료 조건
-	if len(nums) == 1 {
-		//fmt.Println("len(nums)==1, return")
+func quick_sort(nums []int) {
+	// base condition, length가 0일 수도 있음
+	if len(nums) <= 1 {
 		return
 	}
 
-	// divide and conpuer
-	n1, n2 := nums[:len(nums)/2], nums[len(nums)/2:]
-	merge_sort(n1)
-	merge_sort(n2)
-
-	// combine
-	tmp := make([]int, len(nums))
-	var c1, c2 int
-	for i := range len(nums) {
-		//fmt.Printf("loop %d, c1:%d, c2:%d\n", i+1, c1, c2)
-		// 한쪽 인덱스가 이미 끝에 다다랐다면 다른쪽 원소를 가져오기
-		if c1 == len(nums)/2 {
-			tmp[i] = n2[c2]
-			c2++
-			continue
+	// pivot 옮기기
+	var p int
+	s, e := 1, len(nums)-1
+	for {
+		for s <= e && nums[s] <= nums[p] {
+			s++
 		}
-		if c2 == len(nums)/2+len(nums)%2 {
-			tmp[i] = n1[c1]
-			c1++
-			continue
+		for s <= e && nums[e] >= nums[p] {
+			e--
 		}
-
-		// 양쪽 원소를 비교하고 인덱스 조정
-		if n1[c1] <= n2[c2] {
-			tmp[i] = n1[c1]
-			c1++
+		if s > e {
+			break
 		} else {
-			tmp[i] = n2[c2]
-			c2++
+			swap(nums, s, e)
 		}
-		//fmt.Printf("loop %d, c1:%d, c2:%d\n\n", i+1, c1, c2)
 	}
-	copy(nums, tmp)
+	swap(nums, p, e)
+
+	// pivot 자리 제외하고 양쪽 각각 정렬
+	quick_sort(nums[:e])
+	quick_sort(nums[e+1:])
 }
 
 func reverse(nums []int) []int {
@@ -56,6 +42,12 @@ func reverse(nums []int) []int {
 		rst[len(rst)-1-i] = v
 	}
 	return rst
+}
+
+func swap(nums []int, x, y int) {
+	tmp := nums[x]
+	nums[x] = nums[y]
+	nums[y] = tmp
 }
 
 func main() {
@@ -72,7 +64,7 @@ func main() {
 	}
 
 	// Please write your code here.
-	merge_sort(nums)
+	quick_sort(nums)
 	for _, v := range nums {
 		fmt.Printf("%d ", v)
 	}
