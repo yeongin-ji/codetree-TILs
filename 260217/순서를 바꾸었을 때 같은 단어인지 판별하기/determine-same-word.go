@@ -20,7 +20,9 @@ func main() {
 	r2 := []rune(word2)
 	slices.Sort(r1)
 	slices.Sort(r2)
-	if slices.Equal(r1, r2) {
+	word1 = string(r1)
+	word2 = string(r2)
+	if word1 == word2 {
 		fmt.Println("Yes")
 	} else {
 		fmt.Println("No")
