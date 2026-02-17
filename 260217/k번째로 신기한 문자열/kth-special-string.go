@@ -29,7 +29,7 @@ func main() {
 	tmp := make([]string, 0)
 	for _, s := range words {
 		r := []rune(s)
-		if t == string(r[:len(t)]) {
+		if len(t) <= len(r) && t == string(r[:len(t)]) {
 			tmp = append(tmp, s)
 		}
 	}
