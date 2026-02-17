@@ -9,7 +9,6 @@ import (
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Split(bufio.ScanWords)
 	scanner.Scan()
 	word1 := scanner.Text()
 	scanner.Scan()
