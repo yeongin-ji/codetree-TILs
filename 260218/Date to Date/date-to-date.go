@@ -30,6 +30,6 @@ func main() {
 		date2 += days_of_month[i+1]
 	}
 	date2 += d2
-	rst := date2 - date1 + 1
+	rst := date2 - date1
 	fmt.Println(rst)
 }
