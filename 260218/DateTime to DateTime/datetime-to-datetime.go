@@ -23,6 +23,6 @@ func main() {
 	if dateTime >= 0 {
 		fmt.Println(dateTime)
 	} else {
-		fmt.Println(dateTime)
+		fmt.Println(-1)
 	}
 }
