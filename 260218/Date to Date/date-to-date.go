@@ -22,14 +22,14 @@ func main() {
 	// Please write your code here.
 	days_of_month := [13]int{0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
 	var date1, date2 int
-	for i := range m1 {
+	for i := range m1-1 {
 		date1 += days_of_month[i+1]
 	}
 	date1 += d1
-	for i := range m2 {
+	for i := range m2-1 {
 		date2 += days_of_month[i+1]
 	}
 	date2 += d2
-	rst := date2 - date1
+	rst := date2 - date1 + 1
 	fmt.Println(rst)
 }
