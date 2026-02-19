@@ -32,5 +32,8 @@ func main() {
 			cnt = 1
 		}
 	}
+	if cnt > 1 {
+		list = append(list, cnt)
+	}
 	fmt.Print(slices.Max(list))
 }
