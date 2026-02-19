@@ -10,7 +10,6 @@ import (
 const size = 210
 
 func SetArea(a *[size][size]int, x, y int) {
-	x -= 8
 	for i := x; i < 8; i++ {
 		for j := y; j < 8; j++ {
 			a[i+100][j+100]++
