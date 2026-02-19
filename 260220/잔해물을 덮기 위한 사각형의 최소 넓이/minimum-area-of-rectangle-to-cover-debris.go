@@ -67,5 +67,10 @@ func main() {
 	width = maxx - minx + 1
 	height = maxy - miny + 1
 
-	fmt.Print(width*height)
+	if width==1 && height==1 {
+		fmt.Print(0)
+	} else {
+		fmt.Print(width*height)
+	}
+	
 }
