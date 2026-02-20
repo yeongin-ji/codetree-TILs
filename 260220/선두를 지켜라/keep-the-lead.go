@@ -52,7 +52,7 @@ func main() {
 	totalT = Move(bSegments, &bHist)
 
 	head := make([]int, 0)
-	for i := 1; i < totalT; i++ {
+	for i := 0; i < totalT; i++ {
 		offset := aHist[i]-bHist[i]
 		if offset < 0 { // b가 선두
 			head = append(head, 1)
