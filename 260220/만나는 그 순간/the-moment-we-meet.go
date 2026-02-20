@@ -59,7 +59,7 @@ func main() {
 	}
 
 	// Please write your code here.
-	moveHist := make([][2]int, 1100)
+	moveHist := make([][2]int, 2_000_200)
 	var totalT int
 	totalT = Simul(moveHist, movesA, 0)
 	totalT = Simul(moveHist, movesB, 1)
