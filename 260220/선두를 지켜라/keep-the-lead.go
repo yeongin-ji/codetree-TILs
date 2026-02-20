@@ -7,18 +7,16 @@ import (
 	"strconv"
 )
 
-func Move(seg, h [][2]int, id int) int {
-	currT := 0
+func Move(seg [][2]int, h *[]int) int {
 	currPos := 0
 	for _, s := range seg {
 		v := s[0]
 		for range s[1] {
-			currT++
 			currPos += v
-			h[currT][id] = currPos
+			*h = append(*h, currPos)
 		}
 	}
-	return currT
+	return len(*h)
 }
 
 func main() {
@@ -48,13 +46,14 @@ func main() {
 	
 	// Please write your code here.
 	var totalT int
-	hist := make([][2]int, 1_000_000*n+100)
-	_ = Move(aSegments, hist, 0)
-	totalT = Move(bSegments, hist, 1)
+	aHist := make([]int, 0)
+	bHist := make([]int, 0)
+	_ = Move(aSegments, &aHist)
+	totalT = Move(bSegments, &bHist)
 
 	head := make([]int, 0)
-	for i := 2; i <= totalT; i++ {
-		offset := hist[i][0]-hist[i][1]
+	for i := 1; i < totalT; i++ {
+		offset := aHist[i]-bHist[i]
 		if offset < 0 { // b가 선두
 			head = append(head, 1)
 		} else if offset > 0 { // a가 선두
