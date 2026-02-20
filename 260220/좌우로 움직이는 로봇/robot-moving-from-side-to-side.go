@@ -16,6 +16,7 @@ const size = 1_000_000
 
 func SetMoves(hist []int, moves []move) int {
 	pos := 0
+	time := 0
 	totalTime := 0
 	for _, m := range moves {
 		pos, time = SetMoveOneCmd(hist, m, pos, time)
@@ -24,7 +25,7 @@ func SetMoves(hist []int, moves []move) int {
 	return totalTime
 }
 
-func SetMoveOneCmd(h []int, m move, pos, time int) int, int {
+func SetMoveOneCmd(h []int, m move, pos, time int) (int, int) {
 	var dir int
 	if m.d == "L" {
 		dir = -1
@@ -65,7 +66,6 @@ func main() {
 	ATotalTime := SetMoves(aHist, robotAMoves)
 	BTotalTime := SetMoves(bHist, robotBMoves)
 	var longTime int
-	var bLong, aLong bool
 	if ATotalTime <= BTotalTime {
 		longTime = BTotalTime
 		// 마지막 원소로 채워서 길이 맞추기
