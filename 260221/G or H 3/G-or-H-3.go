@@ -33,9 +33,16 @@ func main() {
 		line[pos[i]] = letter[i]
 	}
 	maxVal = math.MinInt
-	for i := 1; i < len(line)-k; i++ {
+	limit := len(line) - k
+	if k >= len(line)-1 {
+		limit = 2
+	}
+	for i := 1; i < limit; i++ {
 		sum := 0
 		for j := range k+1 {
+			if j >= len(line) {
+				break
+			}
 			sum += Score(line[i+j])
 		}
 		maxVal = max(maxVal, sum)
