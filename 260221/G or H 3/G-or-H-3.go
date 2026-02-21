@@ -40,7 +40,7 @@ func main() {
 	for i := 1; i < limit; i++ {
 		sum := 0
 		for j := range k+1 {
-			if j >= len(line) {
+			if i+j >= len(line) {
 				break
 			}
 			sum += Score(line[i+j])
