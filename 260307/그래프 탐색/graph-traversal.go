@@ -56,9 +56,9 @@ func main() {
 
 	var cnt int
 	for i := 1; i <= n; i++ {
-		if visited[i] == 1 {
+		if i!=1 && visited[i]==1 {
 			cnt++
 		}
 	}
-	fmt.Print(cnt-1)
+	fmt.Print(cnt)
 }
