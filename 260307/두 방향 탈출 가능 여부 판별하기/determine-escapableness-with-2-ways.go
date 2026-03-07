@@ -8,12 +8,15 @@ import (
 )
 
 var grid, visited [][]int
-var n, m, order int
+var n, m int
 var ds [2][2]int
 
 func DFS(x, y int) {
-	visited[x][y] = order
-	order++
+	visited[x][y] = 1
+
+	if x==n && y==m {
+		return
+	}
 
 	for _, d := range ds {
 		dx, dy := d[0], d[1]
@@ -68,7 +71,6 @@ func main() {
 
 	// Please write your code here.
 	ds = [2][2]int{{1, 0}, {0, 1}}
-	order = 1
 	DFS(1, 1)
 
 	if visited[n][m] != 0 {
